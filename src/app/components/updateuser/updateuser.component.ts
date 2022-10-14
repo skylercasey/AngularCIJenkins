@@ -11,6 +11,7 @@ import { UserAddService } from 'src/app/services/user-add.service';
 export class UpdateuserComponent implements OnInit {
 
   constructor(private updateUserService: UserAddService, private router:Router) { }
+  confirmPassword: string ='none';
 
   ngOnInit(): void {
   }
@@ -23,26 +24,24 @@ export class UpdateuserComponent implements OnInit {
   });
 
   userUpdated(){
-    this.updateUserService.updateUser([
-      this.userForm.value.username,
-      this.userForm.value.oldpassword,
-      this.userForm.value.password,
-      this.userForm.value.confirmpassword
-    ]).subscribe(res=>{
-      if(res=="EnterCorrectUserNameOrPassword"){
-        alert("Please Enter Correct UserName or Password");
-        this.router.navigate(['updateuser']).then(page => { window.location.reload(); });
-      }
-      else if(res=="ConfirmPassword")
-      {
-        alert("Please Confirm Your New Password");
-        this.router.navigate(['updateuser']).then(page => { window.location.reload(); });
-      }
-      else{
-        alert("Updated Successfully");
-        this.router.navigate(['updateuser']).then(page => { window.location.reload(); });
-      }
-    });
+    if(this.Password.value==this.ConfirmPassword.value){
+      this.updateUserService.updateUser([
+        this.userForm.value.username,
+        this.userForm.value.oldpassword,
+        this.userForm.value.password,
+        this.userForm.value.confirmpassword
+      ]).subscribe(res=>{
+        if(res=="EnterCorrectUserNameOrPassword"){
+          alert("Please Enter Correct UserName or Password");
+          this.router.navigate(['updateuser']).then(page => { window.location.reload(); });
+        }
+        else{
+          alert("Updated Successfully");
+          this.router.navigate(['updateuser']).then(page => { window.location.reload(); });
+        }
+      });
+    }
+    this.confirmPassword='inline'
   }
   get Username(): FormControl{ 
     return this.userForm.get('username') as FormControl
@@ -53,7 +52,7 @@ export class UpdateuserComponent implements OnInit {
   get Password(): FormControl{
     return this.userForm.get('password') as FormControl
   }
-  get confirmPassword(): FormControl{
+  get ConfirmPassword():FormControl{
     return this.userForm.get('confirmpassword') as FormControl
   }
 }
