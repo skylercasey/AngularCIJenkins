@@ -1,0 +1,45 @@
+<form [formGroup]="userForm" (ngSubmit)="userUpdated()"  class="border p-3">
+    <div class="row g-0">
+        <div class="col text-center p-2 mb-3 gb-light">
+           <span class="fs-3">Update Users</span>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="username" class="form-label">User Name</label>
+        <input type="text" class="form-control" id="username" formControlName="username">
+        <div class="form-text text-danger" *ngIf="Username.errors?.['required'] && (Username.dirty || Username.touched)">
+            Please Enter Username
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="oldpassword" class="form-label"> Password</label>
+        <input type="password" class="form-control" id="oldpassword" formControlName="oldpassword">
+        <div class="form-text text-danger" *ngIf="oldPassword.errors?.['minlength'] && (oldPassword.dirty || oldPassword.touched)">
+            Please Enter  Password.
+        </div>
+        <div class="form-text text-danger" *ngIf="Username.errors?.['pattern'] && (Username.dirty || Username.touched)">
+            Please Start Username with Alphabet.
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="password" class="form-label">New Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password">
+        <div class="form-text text-danger" *ngIf="Password.errors?.['minlength'] && (Password.dirty || Password.touched)">
+            Please Enter New Password and should be  atleast 8 characters long.
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="confirmpassword" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmpassword" formControlName="confirmpassword">
+        <div class="form-text text-danger" *ngIf="confirmPassword.errors?.['minlength'] && (confirmPassword.dirty || confirmPassword.touched)">
+            Please Confirm Your Password .
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 offset-3 mb-3">
+            <div class="d-grid">
+                <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary" >Update User</button>
+            </div>
+        </div>
+    </div>
+</form>

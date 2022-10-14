@@ -1,0 +1,22 @@
+<form [formGroup]="equipmentCategoryForm" (ngSubmit)="equipmentCategoryUpdated()"  class="border p-3">
+    <div class="row g-0">
+        <div class="col text-center p-2 mb-3 gb-light">
+           <span class="fs-3">Equipment Category</span>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="equipmentcategoryid" class="form-label">EquipmentCategory Id</label>
+        <input type="text" class="form-control" id="equipmentcategoryid" formControlName="equipmentcategoryid">
+    </div>
+    <div class="row mb-3">
+        <label for="equipmentcategoryname" class="form-label">EquipmentCategory Name</label>
+        <input type="text" class="form-control" id="equipmentcategoryname" formControlName="equipmentcategoryname">
+    </div>
+    <div class="row">
+        <div class="col-6 offset-3 mb-3">
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Upd EquipCat</button>
+            </div>
+        </div>
+    </div>
+</form>
