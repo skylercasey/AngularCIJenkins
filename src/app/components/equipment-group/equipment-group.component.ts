@@ -19,7 +19,7 @@ export class EquipmentGroupComponent implements OnInit {
   }
   equipmentGroupForm = new FormGroup({
     equipmentgroupname: new FormControl(""),
-    equipmentcategoryid: new FormControl("")
+    equipmentcategoryid: new FormControl(0)
   });
   equipmentGroupAdded(){
     this.addEquipmentGroupService.addEquipmentGroup([
@@ -28,11 +28,11 @@ export class EquipmentGroupComponent implements OnInit {
     ]).subscribe(res=>{
       if(res=="Exist"){
         alert("Equipment Group Already Exist");
-        this.router.navigate(['equipmentgroup']).then(page => { window.location.reload(); });
+        window.location.reload();
       }
       else{
         alert("Equipment Group Added");
-        this.router.navigate(['equipmentgroup']).then(page => { window.location.reload(); });
+        window.location.reload();
       }
     })
   }

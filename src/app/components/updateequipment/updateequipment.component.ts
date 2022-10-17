@@ -22,8 +22,8 @@ export class UpdateequipmentComponent implements OnInit {
   updateEquipmentForm = new FormGroup({
     equipmentname: new FormControl(""),
     partid: new FormControl("",Validators.required),
-    equipmentgroupid: new FormControl("",Validators.required),
-    equipmentcategoryid: new FormControl("",Validators.required)
+    equipmentgroupid: new FormControl(0,Validators.required),
+    equipmentcategoryid: new FormControl(0,Validators.required)
   });
 
   equipmentUpdated(){
@@ -35,11 +35,11 @@ export class UpdateequipmentComponent implements OnInit {
     ]).subscribe(res=>{
       if(res=="NotAvailable"){
         alert("Equipment Not Available");
-        this.router.navigate(['updateequipment']).then(page => { window.location.reload(); });
+        window.location.reload();
       }
       else{
         alert("Updated Successfully");
-        this.router.navigate(['updateequipment']).then(page => { window.location.reload(); });
+        window.location.reload();
       }
     })
   }

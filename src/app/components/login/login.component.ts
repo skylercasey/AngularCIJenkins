@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       if(res=='Failure')
       {
         alert("Please Enter Valid Credential");
-        this.router.navigate(['login']).then(page => { window.location.reload(); });
+        window.location.reload();
       }
       else{
         this.loginUserService.setToken(res);

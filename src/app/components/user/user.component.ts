@@ -44,7 +44,7 @@ export class UserComponent implements OnInit {
         if(res=='Exist')
         {
           alert("User already exist")
-          this.router.navigate(['user']).then(page => { window.location.reload(); });
+          window.location.reload();
         }
         else{
           console.log(res);

@@ -25,11 +25,11 @@ export class EquipmentCategoryComponent implements OnInit {
     ]).subscribe(res=>{
       if(res=="Exist"){
         alert("Equipment Category Exist");
-        this.router.navigate(['equipmentcategory']).then(page => { window.location.reload(); });
+        window.location.reload();
       }
       else{
         alert("Equipment Category Added"); 
-        this.router.navigate(['equipmentcategory']).then(page => { window.location.reload(); });
+        window.location.reload();
       }
     })
   }

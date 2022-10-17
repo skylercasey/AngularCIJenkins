@@ -21,20 +21,18 @@ export class DeleteequipmentComponent implements OnInit {
     });
   }
   equipmentForm = new FormGroup({
-    equipment: new FormControl(""),
+    equipment: new FormControl(0),
   });
 
   getEquipmentId(event:any){
-    console.log(event);
-    var eventStatus=event;
-    this.deleteEquipmentService.deleteEquipment(eventStatus).subscribe(res=>
+    this.deleteEquipmentService.deleteEquipment(event).subscribe(res=>
       {
         if(res=="NotAvailable"){
           alert("Equipment Not Available");
         }
         else{
           alert("Deleted Successfully");
-          this.router.navigate(['deleteequipment']).then(page => { window.location.reload(); });
+           window.location.reload();
         }
       }
     );

@@ -21,7 +21,7 @@ export class UpdateequipmentgroupComponent implements OnInit {
   equipmentGroupForm = new FormGroup({
     equipmentgroupid: new FormControl(""),
     equipmentgroupname: new FormControl(""),
-    equipmentcategoryid: new FormControl(""),
+    equipmentcategoryid: new FormControl(0),
   });
 
   equipmentGroupUpdated(){

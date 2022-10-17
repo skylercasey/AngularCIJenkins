@@ -33,11 +33,11 @@ export class UpdateuserComponent implements OnInit {
       ]).subscribe(res=>{
         if(res=="EnterCorrectUserNameOrPassword"){
           alert("Please Enter Correct UserName or Password");
-          this.router.navigate(['updateuser']).then(page => { window.location.reload(); });
+          window.location.reload();
         }
         else{
           alert("Updated Successfully");
-          this.router.navigate(['updateuser']).then(page => { window.location.reload(); });
+          window.location.reload();
         }
       });
     }

@@ -22,8 +22,8 @@ export class EquipmentsComponent implements OnInit {
   equipmentForm = new FormGroup({
     equipmentname: new FormControl(""),
     partid: new FormControl(""),
-    equipmentgroupid: new FormControl("123"),
-    equipmentcategoryid: new FormControl("")
+    equipmentgroupid: new FormControl(0),
+    equipmentcategoryid: new FormControl(0)
   });
   equipmentAdded(){
     this.addEquipmentService.addEquipment([
@@ -34,11 +34,11 @@ export class EquipmentsComponent implements OnInit {
     ]).subscribe(res=>{
       if(res=="EquipmentExist"){
         alert("Equipment Already Exist");
-        this.router.navigate(['equipment']).then(page => { window.location.reload(); });
+        window.location.reload();
       }
       else{
         alert("Equipment Added Successfully");
-        this.router.navigate(['equipment']).then(page => { window.location.reload(); });
+        window.location.reload();
       }
     })
   }
