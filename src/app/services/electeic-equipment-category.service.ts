@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class ElecteicEquipmentCategoryService {
 
   constructor(private http: HttpClient) { }
-  baseServerUrl = "https://localhost:5001/api/EquipmentCategory/";
+  baseServerUrl = environment.baseServerUrl+"/api/EquipmentCategory/";
 
   addEquipmentCategory(equipmentcategory:any){
     

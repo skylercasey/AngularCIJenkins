@@ -7,7 +7,7 @@
     <div class="form-group row mb-3">
         <label>Equipment</label>
         <select formControlName="equipment" (input)="getEquipmentId($any($event.target).value)" class="form-control" >    
-            <option value="0" disabled selected>Delete equipment</option>
+            <option value="0" disabled selected>Delete Equipment</option>
             <option [value]="equip.equipmentId" *ngFor="let equip of equipmentList" type="number">{{equip.equipmentName}}</option>
         </select>
     </div>

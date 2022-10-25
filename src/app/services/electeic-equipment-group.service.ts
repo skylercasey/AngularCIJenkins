@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,8 @@ import { Injectable } from '@angular/core';
 export class ElecteicEquipmentGroupService {
 
   constructor(private http: HttpClient) { }
-  baseServerUrl = "https://localhost:5001/api/EquipmentGroup/";
+  //baseServerUrl = "https://localhost:5001/api/EquipmentGroup/";
+  baseServerUrl=environment.baseServerUrl+"/api/EquipmentGroup/";
 
   addEquipmentGroup(equipmentgroup:any){
     return this.http.post(this.baseServerUrl+'addEquipmentGroup',{
@@ -23,6 +25,6 @@ export class ElecteicEquipmentGroupService {
     },{responseType:'text'});
   }
   getAllEquipmentCategory(){
-    return this.http.get('https://localhost:5001/api/EquipmentCategory/getEquipmentCategory');
+    return this.http.get(environment.baseServerUrl+'/api/EquipmentCategory/getEquipmentCategory');
   }
 }

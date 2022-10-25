@@ -18,8 +18,8 @@ export class UserComponent implements OnInit {
   }
 
   userForm = new FormGroup({
-    username: new FormControl("",[Validators.required, Validators.pattern("[a-zA-Z].*")]),
-    password: new FormControl("",[Validators.required,Validators.minLength(8)]),
+    username: new FormControl("",[Validators.required, Validators.pattern("[A-Za-z].*"),Validators.minLength(2),Validators.maxLength(8)]),
+    password: new FormControl("",[Validators.required,Validators.minLength(8),Validators.maxLength(15)]),
     confirmpassword: new FormControl(""),
     active: new FormControl("",Validators.required)
   });

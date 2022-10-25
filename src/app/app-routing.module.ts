@@ -25,7 +25,7 @@ const routes: Routes = [
   component: UserComponent
  },
  {path:'updateuser',
-  component: UpdateuserComponent
+  component: UpdateuserComponent,
  },
  {path:'equipmentcategory',
   component: EquipmentCategoryComponent
@@ -48,7 +48,8 @@ const routes: Routes = [
   component: DeleteequipmentComponent
  },
  {path:'updateequipment',
-  component: UpdateequipmentComponent
+  component: UpdateequipmentComponent,
+  canActivate:[UserguardGuard]
  },
  {
   path:'**',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ElecteicEquipmentGroupService } from 'src/app/services/electeic-equipment-group.service';
 
@@ -18,8 +18,8 @@ export class EquipmentGroupComponent implements OnInit {
     });
   }
   equipmentGroupForm = new FormGroup({
-    equipmentgroupname: new FormControl(""),
-    equipmentcategoryid: new FormControl(0)
+    equipmentgroupname: new FormControl("",[Validators.required,Validators.pattern("[A-Za-z][A-Za-z0-9]*"),Validators.minLength(2),Validators.maxLength(8)]),
+    equipmentcategoryid: new FormControl("",Validators.required)
   });
   equipmentGroupAdded(){
     this.addEquipmentGroupService.addEquipmentGroup([

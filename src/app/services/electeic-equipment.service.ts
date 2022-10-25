@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,8 @@ export class ElecteicEquipmentService {
 
   constructor(private http: HttpClient) { }
 
-  baseServerUrl = "https://localhost:5001/api/Equipment/";
+  //baseServerUrl = "https://localhost:5001/api/Equipment/";
+  baseServerUrl=environment.baseServerUrl+"/api/Equipment/";
 
   addEquipment(equipment:any){
     return this.http.post(this.baseServerUrl+'addEquipment',{
@@ -34,12 +36,12 @@ export class ElecteicEquipmentService {
     });
   }
   getAllEquipmentCategory(){
-    return this.http.get('https://localhost:5001/api/EquipmentCategory/getEquipmentcategory');
+    return this.http.get(environment.baseServerUrl+'/api/EquipmentCategory/getEquipmentcategory');
   }
   getAllEquipment(){
-    return this.http.get('https://localhost:5001/api/Equipment/getEquipment');
+    return this.http.get(environment.baseServerUrl+'/api/Equipment/getEquipment');
   }
   getEquipmentGroupByCategoryId(equipCatId:any){
-    return this.http.get('https://localhost:5001/api/EquipmentGroup/getEquipmentCategoryByGroupId/'+equipCatId);
+    return this.http.get(environment.baseServerUrl+'/api/EquipmentGroup/getEquipmentCategoryByGroupId/'+equipCatId);
   }
 }

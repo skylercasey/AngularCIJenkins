@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ElecteicEquipmentService } from 'src/app/services/electeic-equipment.service';
 import { UserAddService } from 'src/app/services/user-add.service';
@@ -20,10 +20,10 @@ export class EquipmentsComponent implements OnInit {
     });
   }
   equipmentForm = new FormGroup({
-    equipmentname: new FormControl(""),
-    partid: new FormControl(""),
-    equipmentgroupid: new FormControl(0),
-    equipmentcategoryid: new FormControl(0)
+    equipmentname: new FormControl("",[Validators.required,Validators.pattern("[A-Za-z0-9]*"),Validators.minLength(2),Validators.maxLength(8)]),
+    partid: new FormControl("",[Validators.required,Validators.pattern("[A-Za-z0-9]*"),Validators.maxLength(5)]),
+    equipmentgroupid: new FormControl("",Validators.required),
+    equipmentcategoryid: new FormControl("",Validators.required)
   });
   equipmentAdded(){
     this.addEquipmentService.addEquipment([
@@ -52,5 +52,12 @@ export class EquipmentsComponent implements OnInit {
   {
     this.userAddService.removeToken();
     this.router.navigateByUrl('login');
+  }
+
+  get equipmentName(): FormControl{ 
+    return this.equipmentForm.get('equipmentname') as FormControl
+  }
+  get PartId(): FormControl{ 
+    return this.equipmentForm.get('partid') as FormControl
   }
 }

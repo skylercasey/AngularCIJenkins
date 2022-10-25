@@ -2,6 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { User } from '../models/user';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +12,12 @@ import { BehaviorSubject } from 'rxjs';
 export class UserAddService {
 
   constructor(private http: HttpClient) { }
-  baseServerUrl = "https://localhost:5001/api/User/";
+  //baseServerUrl = "https://localhost:5001/api/User/";
+  baseServerUrl=environment.baseServerUrl+"/api/User/";
 
   currentUser: BehaviorSubject<any> =new BehaviorSubject(null); 
 
   jwtHelperService=new JwtHelperService();
-  
   addUser(user:any){
     return this.http.post(this.baseServerUrl+ "addUser",{
       UserName: user[0],

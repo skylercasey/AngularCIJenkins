@@ -14,18 +14,18 @@
     <div class="row mb-3">
         <label for="oldpassword" class="form-label"> Password</label>
         <input type="password" class="form-control" id="oldpassword" formControlName="oldpassword">
-        <div class="form-text text-danger" *ngIf="oldPassword.errors?.['minlength'] && (oldPassword.dirty || oldPassword.touched)">
-            Please Enter  Password.
-        </div>
-        <div class="form-text text-danger" *ngIf="Username.errors?.['pattern'] && (Username.dirty || Username.touched)">
-            Please Start Username with Alphabet.
+        <div class="form-text text-danger" *ngIf="oldPassword.errors?.['required'] && (oldPassword.dirty || oldPassword.touched)">
+            Please Enter Password
         </div>
     </div>
     <div class="row mb-3">
         <label for="password" class="form-label">New Password</label>
         <input type="password" class="form-control" id="password" formControlName="password">
         <div class="form-text text-danger" *ngIf="Password.errors?.['minlength'] && (Password.dirty || Password.touched)">
-            Please Enter New Password and should be  atleast 8 characters long.
+            Please Enter Password of atleast 8 characters
+        </div>
+        <div class="form-text text-danger" *ngIf="Password.errors?.['maxlength'] && (Password.dirty || Password.touched)">
+            Maximum password length can be 15 characters long only.
         </div>
     </div>
     <div class="row mb-3">
@@ -40,6 +40,11 @@
             <div class="d-grid">
                 <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary" >Update User</button>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-3">
+            <span class="me-3">Login Here</span><a routerLink="/login">Login</a>
         </div>
     </div>
 </form>

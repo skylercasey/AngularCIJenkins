@@ -17,10 +17,10 @@ export class UpdateuserComponent implements OnInit {
   }
 
   userForm = new FormGroup({
-    username: new FormControl("",[Validators.required, Validators.pattern("[a-zA-Z].*")]),
-    oldpassword: new FormControl("",[Validators.required,Validators.minLength(8)]),
-    password: new FormControl("",[Validators.required,Validators.minLength(8)]),
-    confirmpassword: new FormControl("",[Validators.required,Validators.minLength(8)]),
+    username: new FormControl("",[Validators.required]),
+    oldpassword: new FormControl("",[Validators.required]),
+    password: new FormControl("",[Validators.required,Validators.minLength(8),Validators.maxLength(15)]),
+    confirmpassword: new FormControl("",[Validators.required]),
   });
 
   userUpdated(){
@@ -41,7 +41,10 @@ export class UpdateuserComponent implements OnInit {
         }
       });
     }
-    this.confirmPassword='inline'
+    else{
+      this.confirmPassword='inline'
+    }
+    
   }
   get Username(): FormControl{ 
     return this.userForm.get('username') as FormControl

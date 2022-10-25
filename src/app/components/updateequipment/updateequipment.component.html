@@ -1,9 +1,12 @@
-<form [formGroup]="updateEquipmentForm" (ngSubmit)="equipmentUpdated()"  class="border p-3">
-    <div class="row g-0">
-        <div class="col text-center p-2 mb-3 gb-light">
-           <span class="fs-3">Update Equipments</span>
-        </div>
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand ">Update Equipment</a>
+      <form class="d-flex input-group w-auto">
+        <button class="btn btn-primary" (click)="logOut()" >Log Out</button>
+      </form>
     </div>
+</nav>
+<form [formGroup]="updateEquipmentForm" (ngSubmit)="equipmentUpdated()"  class="border p-3">
     <div class="row mb-3">
         <label for="equipmentname" class="form-label">Equipment Name</label>
         <input type="text" class="form-control" id="equipmentname" formControlName="equipmentname">
@@ -11,18 +14,27 @@
     <div class="row mb-3">
         <label for="partid" class="form-label">Part Id</label>
         <input type="text" class="form-control" id="partid" formControlName="partid">
+        <div class="form-text text-danger" *ngIf="PartId.errors?.['maxlength'] && (PartId.dirty || PartId.touched)">
+            Maximum Equipment Name length can be 5 characters long only.
+          </div>
+          <div class="form-text text-danger" *ngIf="PartId.errors?.['required'] && (PartId.dirty || PartId.touched)">
+           Please Enter PartId.
+          </div>
+          <div class="form-text text-danger" *ngIf="PartId.errors?.['pattern'] && (PartId.dirty || PartId.touched)">
+             Part Id cannot contain special characters. 
+          </div>
     </div>
     <div class="form-group row mb-3">
         <label>Equipment Category</label>
         <select formControlName="equipmentcategoryid" (change)="GetEquipGroupById($any($event.target).value)" class="form-control" >
-            <option value="0" disabled selected>Select Equipment Cataegory</option>
+            <option value="" disabled selected>Select equipment category</option>
             <option [value]="equipCat.equipmentCategoryId" *ngFor="let equipCat of equipmentCategoryList">{{equipCat.equipmentCategoryName}}</option>
         </select>
     </div>
     <div class="form-group row mb-3">
        <label>Equipment Group</label>
         <select formControlName="equipmentgroupid" class="form-control">
-           <option value="0" disabled selected>Select Equipment Group</option>
+           <option value="" disabled selected>Select equipment group</option>
            <option [value]="equipGrp.equipmentGroupId"  *ngFor="let equipGrp of equipmentGroupList">{{equipGrp.equipmentGroupName}}</option>
         </select>
     </div>
