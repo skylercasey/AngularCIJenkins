@@ -1,3 +1,4 @@
+---
 kind: Deployment
 apiVersion: apps/v1
 metadata:
@@ -20,7 +21,7 @@ spec:
                   - containerPort: 80
 
 
-
+---
 apiVersion: v1
 kind: Service
 metadata:
