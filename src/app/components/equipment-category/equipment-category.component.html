@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="row mb-3">
-        <label for="equipmentcategoryname" class="form-label">EquipmentCategory Name</label>
+        <label for="equipmentcategoryname" class="form-label" class="required">EquipmentCategory Name</label>
         <input type="text" class="form-control" id="equipmentcategoryname" formControlName="equipmentcategoryname">
         <div class="form-text text-danger" *ngIf="EquipmentCategory.errors?.['maxlength'] && (EquipmentCategory.dirty || EquipmentCategory.touched)">
             Maximum Equipment Name length can be 10 characters long only.

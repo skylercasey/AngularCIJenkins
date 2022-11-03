@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ElecteicEquipmentGroupService } from 'src/app/services/electeic-equipment-group.service';
 
 @Component({
@@ -19,14 +19,12 @@ export class UpdateequipmentgroupComponent implements OnInit {
     });
   }
   equipmentGroupForm = new FormGroup({
-    equipmentgroupid: new FormControl(""),
-    equipmentgroupname: new FormControl(""),
-    equipmentcategoryid: new FormControl(0),
+    equipmentgroupname: new FormControl("",Validators.required),
+    equipmentcategoryid: new FormControl("",Validators.required)
   });
 
   equipmentGroupUpdated(){
     this.updateEquipmentGroupService.updateEquipmentGroup([
-      this.equipmentGroupForm.value.equipmentgroupid,
       this.equipmentGroupForm.value.equipmentgroupname,
       this.equipmentGroupForm.value.equipmentcategoryid
     ]).subscribe()

@@ -17,7 +17,6 @@ import { UpdateuserComponent } from './components/updateuser/updateuser.componen
 import { LoginComponent } from './components/login/login.component';
 import { UpdateequipmentComponent } from './components/updateequipment/updateequipment.component';
 import { UpdateequipmentgroupComponent } from './components/updateequipmentgroup/updateequipmentgroup.component';
-import { UpdateequipmentcategoryComponent } from './components/updateequipmentcategory/updateequipmentcategory.component';
 import { DeleteequipmentComponent } from './components/deleteequipment/deleteequipment.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
@@ -32,7 +31,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     LoginComponent,
     UpdateequipmentComponent,
     UpdateequipmentgroupComponent,
-    UpdateequipmentcategoryComponent,
     DeleteequipmentComponent,
     PageNotFoundComponent
     

@@ -35,6 +35,10 @@ export class LoginComponent implements OnInit {
         alert("Please Enter Valid Credential");
         window.location.reload();
       }
+      else if(res=='NotActive'){
+        alert("User is not active");
+        window.location.reload();
+      }
       else{
         this.loginUserService.setToken(res);
         this.router.navigateByUrl('equipment')
