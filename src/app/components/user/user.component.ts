@@ -19,7 +19,7 @@ export class UserComponent implements OnInit {
 
   userForm = new FormGroup({
     username: new FormControl("",[Validators.required, Validators.pattern("[A-Za-z].*"),Validators.minLength(2),Validators.maxLength(8)]),
-    password: new FormControl("",[Validators.required,Validators.minLength(8),Validators.maxLength(15)]),
+    password: new FormControl("",[Validators.required,Validators.minLength(8),Validators.maxLength(15),Validators.pattern(/^(?=\D*\d)(?=[^a-z]*[a-z])(?=.*[$@$!%*?&])(?=[^A-Z]*[A-Z]).{8,15}$/)]),
     confirmpassword: new FormControl(""),
     active: new FormControl("",Validators.required)
   });
@@ -35,24 +35,27 @@ export class UserComponent implements OnInit {
   }
   
   userAdded(){
-    if(this.Password.value==this.ConfirmPassword.value){
-      this.addUserService.addUser([
-        this.userForm.value.username,
-        this.userForm.value.password,
-        this.userForm.value.active
-      ]).subscribe(res=>{
-        if(res=='Exist')
-        {
-          alert("User already exist")
-          window.location.reload();
-        }
-        else{
-          console.log(res);
-          this.addUserService.setToken(res);
-          this.router.navigateByUrl('equipment')
-        }
-      });
+      if(this.Password.value==this.ConfirmPassword.value){
+        this.addUserService.addUser([
+          this.userForm.value.username,
+          this.userForm.value.password,
+          this.userForm.value.active
+        ]).subscribe(res=>{
+          if(res=='Exist')
+          {
+            alert("User already exist")
+           
+          }
+          else{
+            console.log(res);
+            this.addUserService.setToken(res);
+            this.router.navigateByUrl('equipment')
+          }
+        });
+      }
+      else{
+        this.confirmPassword='inline'
+      }
     }
-    this.confirmPassword='inline'
-  }
 }
+

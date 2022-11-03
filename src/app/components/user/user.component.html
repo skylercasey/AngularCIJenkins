@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="row mb-3">
-        <label for="username" class="form-label">User Name</label>
+        <label for="username" class="form-label" class="required">User Name</label>
         <input type="text" class="form-control" id="username" formControlName="username">
         <div class="form-text text-danger" *ngIf="Username.errors?.['required'] && (Username.dirty || Username.touched)">
             Please Enter Username
@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="row mb-3">
-        <label for="password" class="form-label">Password</label>
+        <label for="password" class="form-label" class="required">Password</label>
         <input type="password" class="form-control" id="password" formControlName="password">
         <div class="form-text text-danger" *ngIf="Password.errors?.['minlength'] && (Password.dirty || Password.touched)">
             Please Enter Password of atleast 8 characters
@@ -31,6 +31,9 @@
         </div>
         <div class="form-text text-danger" *ngIf="Password.errors?.['required'] && (Password.dirty || Password.touched)">
             Please Enter Password.
+        </div>
+        <div class="form-text text-danger" *ngIf="Password.errors?.['pattern'] && (Password.dirty || Password.touched)">
+            Password must contain atleast one lower case letter, uppercase letter, digit and special character.
         </div>
     </div>
     <div class="row mb-3">

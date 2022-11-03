@@ -14,7 +14,7 @@
         Please Enter Equipment Name of atleast 2 characters
     </div>
     <div class="form-text text-danger" *ngIf="equipmentName.errors?.['maxlength'] && (equipmentName.dirty || equipmentName.touched)">
-        Maximum Equipment Name length can be 8 characters long only.
+        Maximum Equipment Name length can be 10 characters long only.
     </div>
     <div class="form-text text-danger" *ngIf="equipmentName.errors?.['required'] && (equipmentName.dirty || equipmentName.touched)">
        Please Enter Equipment Name.

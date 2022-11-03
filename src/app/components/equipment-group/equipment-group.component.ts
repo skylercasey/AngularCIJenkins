@@ -18,7 +18,7 @@ export class EquipmentGroupComponent implements OnInit {
     });
   }
   equipmentGroupForm = new FormGroup({
-    equipmentgroupname: new FormControl("",[Validators.required,Validators.pattern("[A-Za-z][A-Za-z0-9]*"),Validators.minLength(2),Validators.maxLength(8)]),
+    equipmentgroupname: new FormControl("",[Validators.required,Validators.pattern("[A-Za-z][A-Za-z0-9]*"),Validators.minLength(2),Validators.maxLength(10)]),
     equipmentcategoryid: new FormControl("",Validators.required)
   });
   equipmentGroupAdded(){
@@ -35,5 +35,9 @@ export class EquipmentGroupComponent implements OnInit {
         window.location.reload();
       }
     })
+  }
+
+  get EquipmentGroup(): FormControl{ 
+    return this.equipmentGroupForm.get('equipmentgroupname') as FormControl
   }
 }

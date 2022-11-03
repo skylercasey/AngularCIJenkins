@@ -20,7 +20,7 @@ export class EquipmentsComponent implements OnInit {
     });
   }
   equipmentForm = new FormGroup({
-    equipmentname: new FormControl("",[Validators.required,Validators.pattern("[A-Za-z0-9]*"),Validators.minLength(2),Validators.maxLength(8)]),
+    equipmentname: new FormControl("",[Validators.required,Validators.pattern("[A-Za-z0-9]*"),Validators.minLength(2),Validators.maxLength(10)]),
     partid: new FormControl("",[Validators.required,Validators.pattern("[A-Za-z0-9]*"),Validators.maxLength(5)]),
     equipmentgroupid: new FormControl("",Validators.required),
     equipmentcategoryid: new FormControl("",Validators.required)
@@ -34,7 +34,6 @@ export class EquipmentsComponent implements OnInit {
     ]).subscribe(res=>{
       if(res=="EquipmentExist"){
         alert("Equipment Already Exist");
-        window.location.reload();
       }
       else{
         alert("Equipment Added Successfully");

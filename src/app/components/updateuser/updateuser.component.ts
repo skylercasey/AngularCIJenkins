@@ -19,7 +19,7 @@ export class UpdateuserComponent implements OnInit {
   userForm = new FormGroup({
     username: new FormControl("",[Validators.required]),
     oldpassword: new FormControl("",[Validators.required]),
-    password: new FormControl("",[Validators.required,Validators.minLength(8),Validators.maxLength(15)]),
+    password: new FormControl("",[Validators.required,Validators.minLength(8),Validators.maxLength(15),Validators.pattern(/^(?=\D*\d)(?=[^a-z]*[a-z])(?=.*[$@$!%*?&])(?=[^A-Z]*[A-Z]).{8,15}$/)]),
     confirmpassword: new FormControl("",[Validators.required]),
   });
 

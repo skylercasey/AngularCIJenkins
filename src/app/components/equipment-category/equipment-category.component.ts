@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ElecteicEquipmentCategoryService } from 'src/app/services/electeic-equipment-category.service';
 
@@ -16,7 +16,7 @@ export class EquipmentCategoryComponent implements OnInit {
   }
 
   equipmentCategoryForm = new FormGroup({
-    equipmentcategoryname: new FormControl(""),
+    equipmentcategoryname: new FormControl("",[Validators.required,Validators.pattern("[A-Za-z][A-Za-z0-9]*"),Validators.minLength(2),Validators.maxLength(10)]),
   });
 
   equipmentCategoryAdded(){
@@ -32,5 +32,9 @@ export class EquipmentCategoryComponent implements OnInit {
         window.location.reload();
       }
     })
+  }
+
+  get EquipmentCategory(): FormControl{ 
+    return this.equipmentCategoryForm.get('equipmentcategoryname') as FormControl
   }
 }
