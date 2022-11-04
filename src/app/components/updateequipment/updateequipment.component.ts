@@ -36,7 +36,7 @@ export class UpdateequipmentComponent implements OnInit {
     ]).subscribe(res=>{
       if(res=="NotAvailable"){
         alert("Equipment Not Available");
-        window.location.reload();
+        //window.location.reload();
       }
       else{
         alert("Updated Successfully");
