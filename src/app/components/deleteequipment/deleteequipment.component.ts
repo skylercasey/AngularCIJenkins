@@ -25,16 +25,20 @@ export class DeleteequipmentComponent implements OnInit {
   });
 
   getEquipmentId(event:any){
-    this.deleteEquipmentService.deleteEquipment(event).subscribe(res=>
-      {
-        if(res=="NotAvailable"){
-          alert("Equipment Not Available");
+    if(confirm("Are you sure to delete?")){
+      this.deleteEquipmentService.deleteEquipment(event).subscribe(res=>
+        {
+          if(res=="NotAvailable"){
+            alert("Equipment Not Available");
+          }
+          else{
+            alert("Deleted Successfully");
+             window.location.reload();
+          }
         }
-        else{
-          alert("Deleted Successfully");
-           window.location.reload();
-        }
-      }
     );
+    }
   }
+
+  
 }
