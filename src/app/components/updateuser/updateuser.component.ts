@@ -44,7 +44,6 @@ export class UpdateuserComponent implements OnInit {
     else{
       this.confirmPassword='inline'
     }
-    
   }
   get Username(): FormControl{ 
     return this.userForm.get('username') as FormControl

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { User } from 'src/app/models/user';
 import { UserAddService } from 'src/app/services/user-add.service';
 
 @Component({
@@ -10,15 +10,17 @@ import { UserAddService } from 'src/app/services/user-add.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
   constructor(private addUserService: UserAddService, private router: Router) { }
   confirmPassword: string ='none';
 
   ngOnInit(): void {
   }
 
+  
+  
+
   userForm = new FormGroup({
-    username: new FormControl("",[Validators.required, Validators.pattern("[A-Za-z].*"),Validators.minLength(2),Validators.maxLength(8)]),
+    username: new FormControl("",[Validators.required, Validators.pattern(/^([A-z])*[^\s]\1*$/),Validators.minLength(2),Validators.maxLength(8)]),
     password: new FormControl("",[Validators.required,Validators.minLength(8),Validators.maxLength(15),Validators.pattern(/^(?=\D*\d)(?=[^a-z]*[a-z])(?=.*[$@$!%*?&])(?=[^A-Z]*[A-Z]).{8,15}$/)]),
     confirmpassword: new FormControl(""),
     active: new FormControl("",Validators.required)
@@ -44,7 +46,6 @@ export class UserComponent implements OnInit {
           if(res=='Exist')
           {
             alert("User already exist")
-           
           }
           else{
             console.log(res);
