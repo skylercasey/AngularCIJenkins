@@ -15,8 +15,8 @@ spec:
             name: deployment
        spec:
           containers:
-             - name: uiimage
-               image: bhasmeht/imageui1
+             - name: angularcontanier
+               image: bhasmeht/electricequipmentimage
                ports:
                   - containerPort: 80
 
