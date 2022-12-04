@@ -2,7 +2,7 @@ pipeline{
     agent any
     environment{
         dockerImage=''
-        registry='bhasmeht/electricequipmentimage'
+        registry='bhasmeht/electricequipmentimage1'
         registryCredential='dockerhub_id'
     }
     stages{
@@ -44,14 +44,14 @@ pipeline{
             steps{
                 sshagent(['kubernetes_id']) {
                     
-                    sh "scp -r -o StrictHostKeyChecking=no deploymentservice.yaml ubuntu@3.88.200.75:~/"
+                    sh "scp -r -o StrictHostKeyChecking=no deploymentservice.yaml ubuntu@13.232.90.120:~/"
                     script{
                         try{
                             
-                            sh "ssh ubuntu@3.88.200.75 kubectl apply -f ."
+                            sh "ssh ubuntu@13.232.90.120 kubectl apply -f ."
                         }
                         catch(error){
-                           sh "ssh ubuntu@3.88.200.75 kubectl create -f ." 
+                           sh "ssh ubuntu@13.232.90.120 kubectl create -f ." 
                         }
                     }
                 }
