@@ -16,7 +16,7 @@ spec:
        spec:
           containers:
              - name: angularcontanier
-               image: bhasmeht/image6
+               image: bhasmeht/image7
                ports:
                   - containerPort: 80
 
