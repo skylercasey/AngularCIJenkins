@@ -1,0 +1,31 @@
+name: Deployment On K8s Cluster
+
+on: 
+  push: 
+     branches: ['main']
+
+jobs:
+  Deploy_On_Cluster:
+    name: Deploy Application On Cluster
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo 
+        uses: actions/checkout@v3
+      
+      - name: Login to Dockerhub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_ID }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}   
+
+      - name: Generate unique image tag
+        id: new_tag
+        run: echo "::set-output name=tag::$(echo ${GITHUB_SHA::8})" 
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: bhasmeht/angular-image:${{ steps.new_tag.outputs.tag }} 
+
