@@ -3,6 +3,8 @@ name: Deployment On K8s Cluster
 on: 
   push: 
      branches: ['main']
+  pull_request:
+     branches: ['main']   
 
 jobs:
   Deploy_On_Cluster:
@@ -27,5 +29,25 @@ jobs:
         with:
           context: .
           push: true
-          tags: bhasmeht/angular-image:${{ steps.new_tag.outputs.tag }} 
+          tags: bhasmeht/angular-image:${{ steps.new_tag.outputs.tag }}
+
+      - name: Install Kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'v1.24.11' # default is latest stable
+        id: install 
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1
+
+      - name: Update Kube Configure
+        run: aws eks update-kubeconfig --name mycluster1
+
+      - name: Deploy to eks
+        run: kubectl apply -f deploymentservice.yml      
+
 
