@@ -31,18 +31,18 @@ jobs:
           push: true
           tags: bhasmeht/angular-image:${{ steps.new_tag.outputs.tag }}
 
-      # - name: Install Kubectl
-      #   uses: azure/setup-kubectl@v3
-      #   with:
-      #     version: 'v1.24.11' # default is latest stable
-      #   id: install
+      - name: Install Kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'v1.24.11' # default is latest stable
+        id: install
 
-      - name: Install
-        run:  |
-            curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.24.11/2023-03-17/bin/linux/amd64/kubectl
-            chmod +x ./kubectl
-            mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
-            kubectl version --client  
+      # - name: Install
+      #   run:  |
+      #       curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.24.11/2023-03-17/bin/linux/amd64/kubectl
+      #       chmod +x ./kubectl
+      #       mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
+      #       kubectl version --client  
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -52,7 +52,7 @@ jobs:
           aws-region: ap-south-1
 
       - name: Update Kube Configure
-        run: aws eks update-kubeconfig --name mycluster1
+        run: aws eks --region ap-south-1 update-kubeconfig --name mycluster1 
 
       - name: Deploy to eks
         run: kubectl apply -f deploymentservice.yml      
