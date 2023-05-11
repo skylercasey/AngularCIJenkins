@@ -19,7 +19,7 @@ spec:
                image: bhasmeht/angular-image
                ports:
                   - containerPort: 80
-               imagePullPolicy: always   
+               imagePullPolicy: Always   
 
 
 ---
