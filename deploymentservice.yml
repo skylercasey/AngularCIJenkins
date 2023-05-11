@@ -16,9 +16,10 @@ spec:
        spec:
           containers:
              - name: angularcontanier
-               image: bhasmeht/angular-image:latest
+               image: bhasmeht/angular-image
                ports:
                   - containerPort: 80
+               imagePullPolicy: always   
 
 
 ---
