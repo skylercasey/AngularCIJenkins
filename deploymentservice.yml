@@ -7,12 +7,12 @@ spec:
    replicas: 1
    selector:
        matchLabels:
-          name: deployment
+          name: deployment1
    template:
        metadata:
          name: uideployment
          labels:
-            name: deployment
+            name: deployment1
        spec:
           containers:
              - name: angularcontanier
@@ -26,7 +26,45 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-     name: myservice
+     name: myangularservice
+spec:
+   selector:
+       name: deployment1
+   ports:
+     - protocol: "TCP"
+       port: 80
+       targetPort: 80
+   type: LoadBalancer 
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+   name: mydeploymenttest
+spec:
+   replicas: 1
+   selector:
+       matchLabels:
+          name: deployment
+   template:
+       metadata:
+         name: testdeployment
+         labels:
+            name: deployment
+       spec:
+          containers:
+             - name: testdeployment
+               image: nginx
+               ports:
+                  - containerPort: 80
+               imagePullPolicy: Always   
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+     name: mytestservice
 spec:
    selector:
        name: deployment
@@ -34,4 +72,32 @@ spec:
      - protocol: "TCP"
        port: 80
        targetPort: 80
-   type: LoadBalancer 
+   type: LoadBalancer
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+  annotations:
+    ingressclass.kubernetes.io/is-default-class: "true"
+spec:
+  ingressClassName: myIngressClass
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: myangularservice
+            port:
+              number: 80 
+      - path: /test
+        pathType: Prefix
+        backend:
+          service:
+            name: mytestservice
+            port:
+              number: 80          
+
