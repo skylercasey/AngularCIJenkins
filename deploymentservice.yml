@@ -82,7 +82,7 @@ metadata:
   annotations:
     ingressclass.kubernetes.io/is-default-class: "true"
 spec:
-  ingressClassName: myIngressClass
+  ingressClassName: myig
   rules:
   - http:
       paths:
