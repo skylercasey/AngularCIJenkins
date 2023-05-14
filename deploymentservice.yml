@@ -80,8 +80,8 @@ metadata:
   name: myingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    ingressclass.kubernetes.io/is-default-class: "true"
 spec:
+  ingressClassName: nginx
   rules:
   - host: bhaskarmehta.in
     http:
