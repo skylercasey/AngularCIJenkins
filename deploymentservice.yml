@@ -86,7 +86,6 @@ metadata:
     alb.ingress.kubernetes.io/target-type: instance
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
 spec:
-  ingressClassName: alb
   rules:
   - host: bhaskarmehta.in
     http:
