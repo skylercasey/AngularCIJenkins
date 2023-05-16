@@ -88,7 +88,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-  - host: bhaskarmehta.in
+  - host: mehta.bhaskarmehta.in
     http:
       paths:
       - path: /home
