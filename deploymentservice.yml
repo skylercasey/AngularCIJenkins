@@ -83,7 +83,7 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing 
     alb.ingress.kubernetes.io/target-type: ip
 spec:
-#   ingressClassName: nginx
+  ingressClassName: alb
   rules:
   - host: bhaskarmehta.in
     http:
