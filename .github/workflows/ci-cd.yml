@@ -31,7 +31,7 @@ jobs:
           push: true
           tags: |
                  bhasmeht/angular-image:${{ steps.new_tag.outputs.tag }}
-                 bhasmeht/angular-image:latest
+                 
 
 
       # - name: Install AWS CLI
