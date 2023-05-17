@@ -98,10 +98,12 @@ spec:
             name: myangularservice
             port:
               number: 80 
-  - host: testmehta.bhaskarmehta.in            
-      - path: /
-        pathType: Prefix
-        backend:
+  - host: testmehta.bhaskarmehta.in
+    http:  
+       paths:          
+       - path: /
+         pathType: Prefix
+         backend:
           service:
             name: mytestservice
             port:
