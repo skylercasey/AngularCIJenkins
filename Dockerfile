@@ -1,10 +1,9 @@
-FROM node:latest as build
+FROM node:alpine as build
 WORKDIR /app
 COPY . .
 RUN npm install
-RUN npm run build --prod
+RUN npm run build
 
-
-FROM nginx:latest
+FROM nginx:alpine
 COPY --from=build app/dist/electric-equipment-ui usr/share/nginx/html
 EXPOSE 80
