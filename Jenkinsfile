@@ -8,7 +8,7 @@ pipeline{
     stages{
         stage('clone repo'){
             steps{
-              checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/bhaskarmehta/ElectronicEquipmentAngular.git']]])  
+              checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/bhaskarmehta/AngularCIJenkins.git']]])  
             }
         }
         stage('build image'){
