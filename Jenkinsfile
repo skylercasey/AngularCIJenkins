@@ -2,13 +2,13 @@ pipeline{
     agent any
     environment{
         dockerImage=''
-        registry='bhasmeht/angular-image:2.0.1'
+        registry='pappukumar27/angular-image:2.0.1'
         registryCredential='dockerhub_id'
     }
     stages{
         stage('clone repo'){
             steps{
-              checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/bhaskarmehta/AngularCIJenkins.git']]])  
+              checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/skylercasey/AngularCIJenkins.git']]])  
             }
         }
         stage('build image'){
