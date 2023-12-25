@@ -18,6 +18,19 @@ pipeline{
                 }
             }
         }
+      stage('stop the running container'){
+            steps{
+                sh 'docker stop  mycontainer | xargs --no-run-if-empty'
+                sh 'docker rm mycontainer | xargs -r'
+            }
+        }
+        stage('run image'){
+            steps{
+                script{
+                    dockerImage.run("-p 82:80 --name mycontainer")
+                }
+            }
+        }
         stage('push image to docker hub'){
             steps{
                 script{
